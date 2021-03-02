@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.hide-unless-sibling-checked {
+    visibility: hidden;
+}
+
+input:checked~.hide-unless-sibling-checked {
+    visibility: visible;
+}
