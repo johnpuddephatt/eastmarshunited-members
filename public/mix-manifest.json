@@ -1,4 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/fonts/RockfordSansExtrabold.woff": "/fonts/RockfordSansExtrabold.woff",
+    "/fonts/RockfordSansExtrabold.woff2": "/fonts/RockfordSansExtrabold.woff2",
+    "/fonts/RockfordSansLight.woff": "/fonts/RockfordSansLight.woff",
+    "/fonts/RockfordSansLight.woff2": "/fonts/RockfordSansLight.woff2",
+    "/images/background-lines-horizontal.svg": "/images/background-lines-horizontal.svg",
+    "/images/background-lines.svg": "/images/background-lines.svg"
 }

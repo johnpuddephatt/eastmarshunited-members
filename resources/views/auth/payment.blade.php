@@ -2,12 +2,12 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-36 h-auto" />
+                <x-application-logo class="w-40 h-auto" />
             </a>
         </x-slot>
 
         <form id="amount-form">
-            <h3 class="text-xl font-bold my-4">Payment amount</h3>
+            <h3 class="text-2xl font-bold my-4">Payment amount</h3>
             <p class="mb-2">To become a member you must pay a minimum of £1. This buys you a share of the organisation and lets you vote on how it’s run.</p>
             <p class="mb-6">You can choose to pay more than £1. Any amount over £1 will be counted as a donation towards the running of East Marsh United.</p>
 
@@ -37,7 +37,7 @@
 
 
 
-            <button id="next">Next</button>
+            <x-button class="w-full text-center" id="next">Next</x-button>
         </form>
         <form id="payment-form">
             <h3 class="text-xl font-bold my-4">Enter your card details</h3>
@@ -45,10 +45,10 @@
             <div id="card-element">
                 <!--Stripe.js injects the Card Element-->
             </div>
-            <button class="mt-4" id="submit">
+            <x-button class="w-full mt-4" id="submit">
                 <div class="spinner hidden" id="spinner"></div>
                 <span id="button-text">Pay</span>
-            </button>
+            </x-button>
             <p id="card-error" role="alert"></p>
             <p class="result-message hidden">
                 Payment succeeded. Please wait...
@@ -70,7 +70,6 @@
                 paymentForm.classList.remove('hidden');
                 amountForm.classList.add('hidden');
                 let paymentAmount = (document.querySelector('#amount-form input[type=radio]:checked').value == 'custom') ? document.getElementById("amount-custom-value").value * 100 : document.querySelector('#amount-form input[type=radio]:checked').value;
-                console.log(paymentAmount);
                 setupPaymentForm(paymentAmount);
             })
 
@@ -232,32 +231,6 @@
 
             #payment-request-button {
                 margin-bottom: 32px;
-            }
-
-            /* Buttons and links */
-            button {
-                background: #5469d4;
-                color: #ffffff;
-                font-family: Arial, sans-serif;
-                border-radius: 0 0 4px 4px;
-                border: 0;
-                padding: 12px 16px;
-                font-size: 16px;
-                font-weight: 600;
-                cursor: pointer;
-                display: block;
-                transition: all 0.2s ease;
-                box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-                width: 100%;
-            }
-
-            button:hover {
-                filter: contrast(115%);
-            }
-
-            button:disabled {
-                opacity: 0.5;
-                cursor: default;
             }
 
             /* spinner/processing state, errors */

@@ -6,8 +6,11 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Rockford Sans', ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: theme => ({
+             'background-lines': "url('/images/background-lines-horizontal.svg')"
+            })
         },
     },
 

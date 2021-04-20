@@ -9,3 +9,19 @@
 input:checked~.hide-unless-sibling-checked {
     visibility: visible;
 }
+
+@layer base {
+    @font-face {
+        font-family: Rockford Sans;
+        font-weight: 700;
+        src: url(/fonts/RockfordSansExtrabold.woff) format("woff"),
+            url(/fonts/RockfordSansExtrabold.woff2) format("woff2");
+    }
+
+    @font-face {
+        font-family: Rockford Sans;
+        font-weight: 400;
+        src: url(/fonts/RockfordSansLight.woff) format("woff"),
+            url(/fonts/RockfordSansLight.woff2) format("woff2");
+    }
+}

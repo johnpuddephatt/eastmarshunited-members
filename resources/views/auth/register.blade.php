@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-36 h-auto" />
+                <x-application-logo class="w-40 h-auto" />
             </a>
         </x-slot>
 
@@ -13,7 +13,7 @@
             @csrf
 
             @if(isset($_GET['type']))
-                <h3 class="text-xl font-bold my-4">Become a {{ $_GET['type'] }}</h3>
+                <h3 class="text-2xl font-bold my-4">Become a {{ $_GET['type'] }}</h3>
             @endif
 
             <select @if(isset($_GET['type'])) hidden @endif class="w-full" name="membership_type">
@@ -60,6 +60,18 @@
                                 type="password"
                                 name="password_confirmation" required />
             </div> --}}
+
+            @if(isset($_GET['type']) && $_GET['type'] == 'member')
+                <div class="mt-4 flex">
+                    <x-input id="agree" class="mr-2"
+                                    type="checkbox"
+                                    name="agree"
+                                    required />
+                    <x-label for="agree">
+                        I agree to East Marsh United’s <a class="text-blue-600 underline" href="https://eastmarshunited.org/join#more-information" target="_blank">membership rules</a>
+                    </x-label>
+                </div>
+            @endif
 
             <div class="flex items-center justify-end mt-4">
                 {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
