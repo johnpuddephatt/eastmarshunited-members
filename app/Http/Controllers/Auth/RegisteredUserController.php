@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -19,9 +20,9 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request, $type)
     {
-        return view('auth.register');
+        return view('auth.register', compact('type'));
     }
 
     /**
@@ -38,17 +39,23 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'date_of_birth' => 'required|date'
+            'date_of_birth' => Rule::requiredIf($request->membership_type != 'organisation'),
         ]);
 
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'date_of_birth' => $request->date_of_birth
+            'date_of_birth' => $request->date_of_birth,
+            'type' => $request->membership_type
         ]));
 
         event(new Registered($user));
+
+        if($request->membership_type != 'organisation') {
+            $user->approved = true;
+            $user->save();
+        }
 
         if($request->membership_type == 'member') {
             return redirect(route('register.payment'));

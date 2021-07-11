@@ -2,13 +2,11 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-36 h-auto" />
+                <x-application-logo class="w-40 h-auto" />
             </a>
         </x-slot>
-
-        <h3 class="text-xl font-bold my-4">Thank you</h3>
-
-        <p class="mb-4">Your registration is complete.</p>
-
+        <h3 class="my-4 text-2xl font-bold">Thank you</h3>
+        <p class="mb-4">Your registration is complete!</p>
+        <x-button-link :href="route('dashboard')">Go to timebanking</x-button-link>
     </x-auth-card>
 </x-guest-layout>

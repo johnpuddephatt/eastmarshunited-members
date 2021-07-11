@@ -9,16 +9,14 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\UserApprovalController;
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
-    ->middleware('guest')
-    ->name('register');
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
     ->middleware('guest');
 
 Route::get('/register/complete', [RegisteredUserController::class, 'complete'])
-    ->middleware('auth')
+    ->middleware('auth','approved')
     ->name('register.complete');
 
 Route::get('/register/payment', [RegisteredUserController::class, 'payment'])
@@ -31,6 +29,10 @@ Route::post('/register/paid', [RegisteredUserController::class, 'paid'])
 Route::post('/register/checkout', [RegisteredUserController::class, 'checkout'])
     ->middleware('auth')
     ->name('register.checkout');
+
+Route::get('/register/{type}', [RegisteredUserController::class, 'create'])
+    ->middleware('guest')
+    ->name('register.type');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
     ->middleware('guest')
@@ -58,6 +60,14 @@ Route::post('/reset-password', [NewPasswordController::class, 'store'])
 Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
     ->middleware('auth')
     ->name('verification.notice');
+
+Route::get('/approve-user/{user}', [UserApprovalController::class, 'approve'])
+    ->middleware(config('filament.middleware.auth'))
+    ->name('user.approve');
+
+Route::get('/account-unapproved', [UserApprovalController::class, 'unapproved'])
+->middleware(['auth','unapproved'])
+->name('user.unapproved');
 
 Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
     ->middleware(['auth', 'signed', 'throttle:6,1'])

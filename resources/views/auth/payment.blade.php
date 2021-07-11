@@ -50,9 +50,9 @@
                 <span id="button-text">Pay</span>
             </x-button>
             <p id="card-error" role="alert"></p>
-            <p class="result-message hidden">
+            {{-- <p class="result-message hidden">
                 Payment succeeded. Please wait...
-            </p>
+            </p> --}}
         </form>
 
         <script src="https://js.stripe.com/v3/"></script>
@@ -148,12 +148,12 @@
                 /* ------- UI helpers ------- */
                 // Shows a success message when the payment is complete
                 var orderComplete = function(paymentIntentId) {
-                    loading(false);
-                    document.querySelector(".result-message").classList.remove("hidden");
-                    document.querySelector("button").disabled = true;
-                    setTimeout(()=>{
+                    // loading(false);
+                    // document.querySelector(".result-message").classList.remove("hidden");
+                    // document.querySelector("button").disabled = true;
+                    // setTimeout(()=>{
                         window.location = '/register/complete';
-                    }, 3000);
+                    // }, 1000);
                 };
                 // Show the customer the error from Stripe if their card fails to charge
                 var showError = function(errorMsgText) {
