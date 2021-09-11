@@ -44,6 +44,8 @@ class RegisteredUserController extends Controller
             'date_of_birth' => Rule::requiredIf($request->membership_type != 'organisation'),
         ]);
 
+        dd(Carbon::parse($request->date_of_birth)->toDateTimeString());
+
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
