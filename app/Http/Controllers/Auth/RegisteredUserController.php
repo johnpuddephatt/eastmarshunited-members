@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'date_of_birth' => Carbon::parse($request->date_of_birth),
+            'date_of_birth' => Carbon::parse($request->date_of_birth)->toDateTimeString(),
             'type' => $request->membership_type
         ]));
 
