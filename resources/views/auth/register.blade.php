@@ -32,7 +32,7 @@
                 <x-label for="date_of_birth" :value="__('Date of birth')" />
 
                 <x-input id="date_of_birth" class="block w-full mt-1" type="date" name="date_of_birth"
-                    :value="old('date_of_birth')" />
+                    :value="old('date_of_birth') ?? '1980-01-01'" />
             </div>
             @endif
 
