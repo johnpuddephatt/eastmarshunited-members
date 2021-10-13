@@ -9,10 +9,8 @@
         <p>There are two ways to join East Marsh United – either as a member or as a supporter.</p>
         <x-button-link href="{{ route('register.type', ['type' => 'member']) }}" class="mt-6 w-100">
             <h3 class="text-xl">Become a member</h3>
-            <p class="font-normal normal-case">If you’re 16 or over and support what we’re doing, you can become a
-                member. You’ll
-                need to pay
-                £1, which buys you a share in the organisation.</p>
+            <p class="font-normal normal-case">If you’re 16 or over you can become a
+                member – just £1 buys you a share in the EMU organisation.</p>
         </x-button-link>
         <x-button-link href="{{ route('register.type',  ['type' => 'supporter']) }}" class="block mt-3 mb-4 w-100">
             <h3 class="text-xl">Become a supporter</h3>
