@@ -30,7 +30,8 @@ class User extends Authenticatable
         'phone',
         'description',
         'photo',
-        'credits'
+        'credits',
+        'notes'
     ];
 
     /**

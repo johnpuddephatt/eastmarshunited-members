@@ -32,6 +32,7 @@ class UserResource extends Resource
                             
                             Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation'])->dependable(),
                             Components\Checkbox::make('approved')->when(fn ($record) => $record->type === 'organisation'),
+                            Components\Textarea::make('notes'),
                         ],
                     ),
                     Components\Tab::make(
