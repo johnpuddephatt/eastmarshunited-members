@@ -29,8 +29,9 @@ class UserResource extends Resource
                             Components\TextInput::make('email'),
                             Components\DatePicker::make('date_of_birth'),
                             // Components\FileUpload::make('photo')->image()->imageCropAspectRatio('1:1')->disk('public'),
-                            Components\Checkbox::make('approved')->default(true),
-                            Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation']),
+                            
+                            Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation'])->dependable(),
+                            Components\Checkbox::make('approved')->when(fn ($record) => $record->type === 'organisation'),
                         ],
                     ),
                     Components\Tab::make(
