@@ -61,7 +61,8 @@ class UserResource extends Resource
             ->filters([
                 Filter::make('members', fn ($query) => $query->where('type', 'member')),
                 Filter::make('supporters', fn ($query) => $query->where('type', 'supporter')),
-                Filter::make('organisations', fn ($query) => $query->where('type', 'organisation'))
+                Filter::make('organisations', fn ($query) => $query->where('type', 'organisation')),
+                Filter::make('deleted', fn ($query) => $query->withTrashed())
             ]);
     }
 
