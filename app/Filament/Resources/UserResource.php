@@ -30,7 +30,7 @@ class UserResource extends Resource
                             Components\DatePicker::make('date_of_birth'),
                             // Components\FileUpload::make('photo')->image()->imageCropAspectRatio('1:1')->disk('public'),
                             
-                            Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation'])->dependable(),
+                            Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation'])->default('member')->dependable(),
                             Components\Checkbox::make('approved')->when(fn ($record) => $record->type === 'organisation'),
                             Components\Textarea::make('notes'),
                         ],
