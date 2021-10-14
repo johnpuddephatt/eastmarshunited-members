@@ -14,6 +14,8 @@ use Filament\Resources\Tables\Table;
 
 class UserResource extends Resource
 {
+    public $recordsPerPage = 50;
+    
     public static $icon = 'heroicon-o-user';
 
     public static function form(Form $form)
