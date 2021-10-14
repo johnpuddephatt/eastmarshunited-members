@@ -59,10 +59,10 @@ class UserResource extends Resource
                 Columns\Boolean::make('has_completed_profile')->label('Timebanking')
             ])
             ->filters([
-                Filter::make('members', fn ($query) => $query->where('type', 'member')),
-                Filter::make('supporters', fn ($query) => $query->where('type', 'supporter')),
-                Filter::make('organisations', fn ($query) => $query->where('type', 'organisation')),
-                Filter::make('deleted', fn ($query) => $query->onlyTrashed())
+                Filter::make('Only members', fn ($query) => $query->where('type', 'member')),
+                Filter::make('Only supporters', fn ($query) => $query->where('type', 'supporter')),
+                Filter::make('Only organisations', fn ($query) => $query->where('type', 'organisation')),
+                Filter::make('Show deleted users', fn ($query) => $query->onlyTrashed())
             ]);
     }
 
