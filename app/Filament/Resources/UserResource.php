@@ -57,7 +57,6 @@ class UserResource extends Resource
                 Columns\Text::make('name')->primary(),
                 Columns\Text::make('email'),
                 Columns\Text::make('type'),
-                Columns\Boolean::make('approved')->when(fn ($record) => $record->type === 'organisation'),
                 Columns\Boolean::make('has_completed_profile')->label('Timebanking')
             ])
             ->filters([
