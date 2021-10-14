@@ -8,4 +8,6 @@ use Filament\Resources\Pages\ListRecords;
 class ListUsers extends ListRecords
 {
     public static $resource = UserResource::class;
+    public $recordsPerPage = 50;
+
 }
