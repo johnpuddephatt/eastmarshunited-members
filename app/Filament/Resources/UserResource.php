@@ -15,7 +15,7 @@ use Filament\Resources\Tables\Table;
 class UserResource extends Resource
 {
     public $recordsPerPage = 50;
-    
+
     public static $icon = 'heroicon-o-user';
 
     public static function form(Form $form)
@@ -27,9 +27,9 @@ class UserResource extends Resource
                     Components\Tab::make(
                         'Account',
                         [
-                            Components\TextInput::make('name'),
-                            Components\TextInput::make('email'),
-                            Components\DatePicker::make('date_of_birth'),
+                            Components\TextInput::make('name')->required(),
+                            Components\TextInput::make('email')->required(),
+                            Components\DatePicker::make('date_of_birth')->required(),
                             // Components\FileUpload::make('photo')->image()->imageCropAspectRatio('1:1')->disk('public'),
                             
                             Components\Select::make('type')->options(['member' => 'Member', 'supporter' => 'Supporter', 'organisation' => 'Organisation'])->default('member')->dependable(),
@@ -57,7 +57,7 @@ class UserResource extends Resource
                 Columns\Text::make('name')->primary(),
                 Columns\Text::make('email'),
                 Columns\Text::make('type'),
-                Columns\Boolean::make('approved'),
+                Columns\Boolean::make('approved')->when(fn ($record) => $record->type === 'organisation'),
                 Columns\Boolean::make('has_completed_profile')->label('Timebanking')
             ])
             ->filters([
